@@ -39,5 +39,7 @@ It will also support redirecting the short urls to the correct url.
 <sub>[Modify] message event for bla bla bla</sub>
 <sub>[Fix] message event for bla bla bla</sub>
 </pre>
-
+### Flow
+#### Chache Layer Flow
+<img src="resources/cache-layer-flow.png" width="70%">
 
