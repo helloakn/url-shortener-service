@@ -8,7 +8,7 @@
 Create a URL-shortener service to shorten URLs.  
 API clients will be able to create short URLs from a full length URL.  
 It will also support redirecting the short urls to the correct url.
-<hr/>
+
 ### Application Functionalities
 #### Url Shortening
 - An API Client can send a url and be returned a shortened URL.
