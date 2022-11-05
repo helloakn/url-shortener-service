@@ -5,16 +5,22 @@ import {
   IEvent
 } from '../types/http.types';
 
+import {Validator} from './validator'
+
 export default class Controller{
-  
+
+  public validator: Validator;
   #_prefix:string = '';
 
-  constructor(public httpServer: THttpApplication) {}
+  constructor(public httpServer: THttpApplication) {
+    this.validator = new Validator();
+  }
 
   prefix(url: string):Controller{
     this.#_prefix = url;
     return this;
   }
+  
   action(methods : Array<TRequestMethod>, url: string, event:IEvent):Controller{
     /*
     * generate full url { prefix + url}

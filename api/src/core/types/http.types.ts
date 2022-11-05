@@ -1,5 +1,6 @@
 import Express from 'express';
 
+import { Validator } from '../common/validator';
 /*
 Interfaces for Express
 */
@@ -30,5 +31,6 @@ export type TResponseSuccessMsg = {
 
 // *** Contrller
 export interface IController {
+  validator: Validator,
   response:(res:THttpResponse,responseCode: number,responseData?:TResponseSuccessMsg)=>void
 }

@@ -11,5 +11,8 @@ export const RouteApi=(httpSrv: THttpApplication)=>{
   //shortenedurl/test
   shortenedUrlController
     .prefix('shortenedurl')
-    .action([RequestMethod.Post,RequestMethod.Get],"/test",shortenedUrlController.TestMethod)
+    //shortenedurl/test
+    .action([RequestMethod.Post,RequestMethod.Get],"/test",shortenedUrlController.TestFunction)
+    //shortenedurl/generateshortcode
+    .action([RequestMethod.Post],"/generate",shortenedUrlController.GenerateUrlFunction)
 }
