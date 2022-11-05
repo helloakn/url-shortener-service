@@ -61,10 +61,11 @@ It will also support redirecting the short urls to the correct url.
 │   │   ├── controllers
 │   ├── core                          # 
 │   │   ├── common
+│   │   │    └── interfacesNtypes  
 │   │   ├── functions
 │   │   ├── databases
 │   │   ├── http
-│   │   └── interfacesNtypes  
+
 ```
 
 ### How To Run

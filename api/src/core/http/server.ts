@@ -2,8 +2,8 @@ import express from 'express';
 import * as bodyparser from 'body-parser';
 import cors from 'cors'
 
+import {RouteConfig} from '../../app/routes/index.route'
 import config from '../common/config'
-
 const { ServerConfig } = config
 
 export default class Server {
@@ -22,6 +22,8 @@ export default class Server {
     this.httpSvr.use(cors());
     this.httpSvr.use(express.json({ limit: '1000MB' }));
 
+    RouteConfig(this.httpSvr);
+    
     this.httpSvr.listen(this.#port, () => {
       console.log(`Server running at http://localhost:${this.#port}`)
     });

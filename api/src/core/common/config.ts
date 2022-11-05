@@ -16,19 +16,5 @@ export default {
   },
   JKey: {
     admin: process.env.ADMIN_KEY || 'UIjHT^&*tyUHT^&*IKHUIHT&*UJHT^&3UJTYUIjHT^&*IKHU7IHyhT&*UJHT4^&UJTYUIjHT^&*tyUIKGT&'
-  },
-  StatusCodes: {
-    Ok: 200,
-    Created: 201,
-    Accepted: 202,
-    NoContent: 204,
-    BadRequest: 400,
-    UnAuthorize: 401,
-    Forbidden: 403,
-    NotFound: 404,
-    NotAcceptable: 406,
-    UnSupportedMediaType: 415,
-    UpgradeRequired: 426,
-    TooManyRequests: 429
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "akncom",
+  "name": "urlshortener",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helloakn/api.akn.com"
+    "url": "git+https://github.com/helloakn/url-shortener-service"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -26,7 +26,6 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
-    "@types/express-fileupload": "^1.4.1",
     "@types/mysql": "^2.15.21",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
