@@ -1,4 +1,6 @@
 # URL Shortener Service
+[![Star Count](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=Star&query=stargazers_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fhelloakn%2Furl-shortener-service)](https://github.com/helloakn/url-shortener-service) [![Licence](https://img.shields.io/badge/dynamic/json?color=informational&label=LICENCE&query=license.name&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fhelloakn%2Furl-shortener-service)](https://github.com/helloakn/url-shortener-service) [![Language](https://img.shields.io/badge/dynamic/json?color=blueviolet&label=Language&query=language&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fhelloakn%2Furl-shortener-service)](https://github.com/helloakn/url-shortener-service) 
+
 [![NodeJs](https://img.shields.io/badge/nodejs-v18.6.0-green)](https://github.com/helloakn/url-shortener-service) 
 [![Express](https://img.shields.io/badge/express-v^4.18.1-green)](https://github.com/helloakn/url-shortener-service) 
 ## Table of content
