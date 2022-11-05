@@ -43,3 +43,6 @@ It will also support redirecting the short urls to the correct url.
 #### Chache Layer Flow
 <img src="resources/cache-layer-flow.png" width="70%">
 
+#### Admin API Flow
+<img src="resources/admin-api-flow.png" width="70%">
+
