@@ -1,4 +1,6 @@
 # URL Shortener Service
+[![NodeJs](https://img.shields.io/badge/nodejs-v18.6.0-green)](https://github.com/helloakn/url-shortener-service) 
+[![Express](https://img.shields.io/badge/express-v^4.18.1-green)](https://github.com/helloakn/url-shortener-service) 
 ## Table of content
 - Application Description
 - Application Functionalities
@@ -8,6 +10,7 @@
 - How To Run
 - Acknowledgments
 ---
+
 ### Application Description
 Create a URL-shortener service to shorten URLs.  
 API clients will be able to create short URLs from a full length URL.  
