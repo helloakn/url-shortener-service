@@ -3,6 +3,10 @@
 - Application Description
 - Application Functionalities
 - Git Conventional Commits Message
+- Flow
+- File Structure
+- How To Run
+- Acknowledgments
 ---
 ### Application Description
 Create a URL-shortener service to shorten URLs.  
@@ -46,3 +50,34 @@ It will also support redirecting the short urls to the correct url.
 #### Admin API Flow
 <img src="resources/admin-api-flow.png" width="70%">
 
+### File Structure
+```
+-api
+├── src                               # for typescripts
+│   ├── app                           # 
+│   │   ├── controllers
+│   │   ├── middlewares
+│   │   ├── routes
+│   │   ├── controllers
+│   ├── core                          # 
+│   │   ├── common
+│   │   ├── functions
+│   │   ├── databases
+│   │   ├── http
+│   │   └── interfacesNtypes  
+```
+
+### How To Run
+#### .env
+```
+REST_SERVER_HOST=0.0.0.0
+REST_SERVER_PORT=9090
+
+DB_SERVER_HOST=
+DB_SERVER_PORT=
+DB_SERVER_USR=
+DB_SERVER_PASSWD=
+DB_SERVER_DB_NAME=
+```
+### Acknowledgments
+Thank you so much.
