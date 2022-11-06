@@ -1,11 +1,9 @@
 import {IProperty,TMsg} from '@/core/types/validator.types'
 
 const isValidTime = (_time:string): boolean=>{
-  console.log('_time',_time)
   return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(_time)
 }
 export function funIsTime<T extends IProperty>(me: T, errMsg?:string): T {
-  console.log('funIsTime me._value',me._value)
   const obj:Promise<TMsg> = new Promise((resolve) => {
     try {
       if(isValidTime(me._value)){

@@ -1,7 +1,6 @@
 import {IProperty,TMsg} from '@/core/types/validator.types'
 
 export function funIsMin<T extends IProperty>(me: T, _min: number, errMsg?:string): T {
-  console.log('funIsMin',_min)
   const obj:Promise<TMsg> = new Promise((resolve) => {
     try {
       if(me._value.length>=_min){
@@ -19,7 +18,6 @@ export function funIsMin<T extends IProperty>(me: T, _min: number, errMsg?:strin
         resolve(errMsg)
     }
   }); //Promise
-  console.log('funIsMin me',_min)
   me.PromiseList.push(obj);
   return me;
 }

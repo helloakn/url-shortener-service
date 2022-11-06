@@ -1,4 +1,4 @@
-import {customRuleFunction} from './rules/customRule.types'
+import { customRuleFunction } from './rules/customRule.types'
 import { funIsEmpty } from './rules/isEmpty.rules'
 import { funIsMin } from './rules/isMin.rules'
 import { funIsMax } from './rules/isMax.rules'
