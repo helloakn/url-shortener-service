@@ -1,6 +1,8 @@
 import express from 'express';
 import * as bodyparser from 'body-parser';
+
 import cors from 'cors'
+import expressFileUpload from 'express-fileupload'
 
 import {RouteConfig} from '@/app/routes/index.route'
 import config from '@/core/common/config'
@@ -22,6 +24,12 @@ export class Server {
     this.httpSvr.use(cors());
     this.httpSvr.use(express.json({ limit: '1000MB' }));
 
+    this.httpSvr.use(expressFileUpload(
+      {
+          useTempFiles : false,
+          tempFileDir : '/tmp/'
+      }
+    ));
     RouteConfig(this.httpSvr);
     
     this.httpSvr.listen(this.#port, () => {
