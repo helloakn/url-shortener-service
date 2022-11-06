@@ -3,9 +3,9 @@ import {
   TResponseSuccessMsg,
   IController,
   TValidateResult
- } from '../../../../core/types';
+ } from '@/core/types';
 
-import {StatusCode} from '../../../../core/common/enums'
+import {StatusCode} from '@/core/common/enums'
 const { Success } = StatusCode
 
 export async function GenerateEvent<T extends IController>(me: T, req: THttpRequest, res: THttpResponse): Promise<void> {
@@ -24,11 +24,11 @@ export async function GenerateEvent<T extends IController>(me: T, req: THttpRequ
     console.log('vResult',vResult)
   if(vResult.status){
 
-    const msgBody: TResponseSuccessMsg = {message:"Successfully Added"};
+    const msgBody: TResponseSuccessMsg = {message:"Successfully cc"};
     me.response(res,Success.OK,msgBody);
   }
   else{
-    const msgBody: TResponseSuccessMsg = {message:"Validation Failed"};
+    const msgBody: TResponseSuccessMsg = {message:"Valion asdas"};
     me.response(res,Success.OK,msgBody);
   }
   

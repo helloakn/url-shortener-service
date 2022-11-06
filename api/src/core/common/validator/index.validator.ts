@@ -1,5 +1,5 @@
 import { InputValidation } from "./input.rules";
-import {TMsg,TValidateResult,TValidationResult} from '../../types/validator.types'
+import {TMsg,TValidateResult,TValidationResult} from '@/core/types/validator.types'
 
 type TRuleClassList = InputValidation.Rules;
 type notFound = null | undefined;

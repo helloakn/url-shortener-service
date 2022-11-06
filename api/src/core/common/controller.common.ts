@@ -3,7 +3,7 @@ import {
   THttpApplication, 
   TRequestMethod, THttpResponse,TResponseSuccessMsg,
   IEvent
-} from '../types/http.types';
+} from '@/core/types/http.types';
 
 import {Validator} from './validator'
 

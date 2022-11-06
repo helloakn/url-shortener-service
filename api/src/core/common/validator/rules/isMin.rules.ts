@@ -1,4 +1,4 @@
-import {IProperty,TMsg} from '../../../types/validator.types'
+import {IProperty,TMsg} from '@/core/types/validator.types'
 
 export function funIsMin<T extends IProperty>(me: T, _min: number, errMsg?:string): T {
   console.log('funIsMin',_min)

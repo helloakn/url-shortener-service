@@ -1,5 +1,5 @@
-import Controller from '../../../core/common/controller.common'
-import { THttpApplication,THttpRequest, THttpResponse } from '../../../core/types/http.types';
+import Controller from '@/core/common/controller.common'
+import { THttpApplication,THttpRequest, THttpResponse } from '@/core/types/http.types';
 
 import { TestEvent } from './test';
 import { GenerateEvent } from './events/generate.event';

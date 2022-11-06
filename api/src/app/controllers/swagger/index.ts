@@ -42,7 +42,7 @@ export default {
         "operationId": "index",
         "tags": ["Admin Api"],
         "parameters": [
-          { "name": "username", "in": "formData", "description":"authorizatio header." ,"required": true, "type":"string"}
+          { "name": "username", "in": "formData", "description":"authorizatio header." ,"required": true, "type":"string"},
           { "name": "password", "in": "formData", "description":"ss." ,"required": true, "type":"string"}
         ],
         "responses": {}

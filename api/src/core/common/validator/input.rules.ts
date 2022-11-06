@@ -3,7 +3,7 @@ import { funIsEmpty } from './rules/isEmpty.rules'
 import { funIsMin } from './rules/isMin.rules'
 import { funIsMax } from './rules/isMax.rules'
 
-import {TMsg} from '../../types/validator.types'
+import {TMsg} from '@/core/types/validator.types'
 
 export namespace InputValidation {
   export class Rules{

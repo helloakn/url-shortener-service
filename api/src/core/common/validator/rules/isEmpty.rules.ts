@@ -1,4 +1,4 @@
-import {IProperty,TMsg} from '../../../types/validator.types'
+import {IProperty,TMsg} from '@/core/types/validator.types'
 
 export function funIsEmpty<T extends IProperty>(me: T,errMsg?:string): T {
   const obj:Promise<TMsg> = new Promise((resolve) => {

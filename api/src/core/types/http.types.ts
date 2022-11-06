@@ -1,6 +1,6 @@
 import Express from 'express';
 
-import { Validator } from '../common/validator';
+import { Validator } from '@/core/common/validator';
 /*
 Interfaces for Express
 */

@@ -6,9 +6,9 @@
 
 import swaggerUi = require('swagger-ui-express');
 
-import { THttpApplication} from '../../core/types/http.types';
+import { THttpApplication} from '@/core/types/http.types';
 
-import swaggerDocument from '../controllers/swagger'
+import swaggerDocument from '@/app/controllers/swagger'
 
 export const RouteSwagger=(httpSrv: THttpApplication)=>{
   httpSrv.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

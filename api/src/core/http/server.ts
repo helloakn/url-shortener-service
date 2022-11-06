@@ -2,11 +2,11 @@ import express from 'express';
 import * as bodyparser from 'body-parser';
 import cors from 'cors'
 
-import {RouteConfig} from '../../app/routes/index.route'
-import config from '../common/config'
+import {RouteConfig} from '@/app/routes/index.route'
+import config from '@/core/common/config'
 const { ServerConfig } = config
 
-export default class Server {
+export class Server {
   private httpSvr: express.Application;
   #port: number | string = ServerConfig.PORT;
 

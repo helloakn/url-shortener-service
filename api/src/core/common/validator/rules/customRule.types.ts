@@ -1,4 +1,4 @@
-import {IProperty,TMsg} from '../../../types/validator.types'
+import {IProperty,TMsg} from '@/core/types/validator.types'
 
 export function customRuleFunction<T extends IProperty>(
     me: T,
