@@ -3,6 +3,7 @@ import { funIsEmpty } from './rules/isEmpty.rules'
 import { funIsMin } from './rules/isMin.rules'
 import { funIsMax } from './rules/isMax.rules'
 import { funIsTime } from './rules/isTime.rules'
+import {funIsValidDateFormat} from './rules/isValidDateFormat.rules'
 
 import {TMsg} from '@/core/types/validator.types'
 
@@ -23,6 +24,8 @@ export namespace InputValidation {
     isEmpty=(errMsg?: string)=>funIsEmpty<Rules>(this,errMsg)
 
     isValidTime=(errMsg?: string)=>funIsTime<Rules>(this,errMsg)
+
+    isValidDateFormat=(errMsg?: string)=>funIsValidDateFormat<Rules>(this,errMsg)
 
     evulate=():void=>{
       console.log(this.Errors)
