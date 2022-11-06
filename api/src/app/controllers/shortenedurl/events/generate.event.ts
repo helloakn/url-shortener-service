@@ -1,12 +1,12 @@
 import { 
   THttpRequest,THttpResponse,
-  TResponseSuccessMsg,
+  TResponseSuccessMsg,TResponseErrorObject,
   IController,
   TValidateResult
  } from '@/core/types';
 
 import {StatusCode} from '@/core/common/enums'
-const { Success } = StatusCode
+const { Success, ClientError } = StatusCode
 
 export async function GenerateEvent<T extends IController>(me: T, req: THttpRequest, res: THttpResponse): Promise<void> {
   const formData = req.body;
@@ -28,8 +28,8 @@ export async function GenerateEvent<T extends IController>(me: T, req: THttpRequ
     me.response(res,Success.OK,msgBody);
   }
   else{
-    const msgBody: TResponseSuccessMsg = {message:"Valion asdas"};
-    me.response(res,Success.OK,msgBody);
+    const msgBody: TResponseErrorObject = {errors:vResult.errors};
+    me.response(res,ClientError.BadRequest,msgBody)
   }
   
 }

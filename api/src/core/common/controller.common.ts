@@ -1,9 +1,9 @@
 
 import { 
   THttpApplication, 
-  TRequestMethod, THttpResponse,TResponseSuccessMsg,
+  TRequestMethod, THttpResponse,TResponseSuccessMsg,TResponseMsgBody,
   IEvent
-} from '@/core/types/http.types';
+} from '@/core/types';
 
 import {Validator} from './validator'
 
@@ -52,7 +52,7 @@ export default class Controller{
     return this;
   }
   
-  response( res:THttpResponse, responseCode: number, responseData?:TResponseSuccessMsg):void{
+  response( res:THttpResponse, responseCode: number, responseData?:TResponseMsgBody):void{
     res.setHeader('Content-Type', 'application/json');
     
     if (typeof responseData == 'undefined') {
