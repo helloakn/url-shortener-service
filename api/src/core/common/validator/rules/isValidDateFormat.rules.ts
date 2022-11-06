@@ -1,6 +1,6 @@
 import {IProperty,TMsg} from '@/core/types/validator.types'
 
-import { isValidDate } from '@/core/functions/isValidate.function';
+import { isValidDate } from '@/core/functions/isValidDate.function';
 
 export function funIsValidDateFormat<T extends IProperty>(me: T, errMsg?:string): T {
   const obj:Promise<TMsg> = new Promise((resolve) => {
