@@ -12,6 +12,7 @@ export default {
   },
   ServerConfig: {
     PORT: process.env.REST_SERVER_PORT || 9999,
+    HOST: process.env.REST_SERVER_HOST || '127.0.0.1',
     allowFrom: process.env.allowFrom || '*'
   },
   JKey: {

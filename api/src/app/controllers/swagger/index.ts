@@ -16,8 +16,8 @@ export default {
         "operationId": "cc",
         "parameters": [
           { "name": "url", "in": "formData", "required": true, "type": "string" },
-          { "name": "date", "in": "formData", "required": true, "type": "string", "format":"date"},
-          { "name": "time", "in": "formData", "required": false, "type":"hh:mm"}
+          { "name": "expire_date", "in": "formData", "required": true, "type": "string", "format":"date"},
+          { "name": "expire_time", "in": "formData", "required": false, "type":"hh:mm"}
         ],
         "responses": {}
       },
