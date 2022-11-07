@@ -1,7 +1,7 @@
 import Controller from '@/core/common/controller.common'
 import { THttpApplication,THttpRequest, THttpResponse } from '@/core/types/http.types';
 
-import { TestEvent } from './test';
+import { TestEvent } from './events/test.event';
 import { GenerateEvent } from './events/generate.event';
 
 export class ShortenedUrlController extends Controller{

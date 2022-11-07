@@ -3,6 +3,10 @@ import dotenv from "dotenv"
 dotenv.config()
 
 export default {
+  RedisConfig: {
+    host: process.env.REDIS_SERVER_HOST || 'localhost',
+    port: process.env.REDIS_SERVER_PORT || 3333,
+  },
   DatabaseConfig: {
     host: process.env.DB_SERVER_HOST || 'localhost',
     port: process.env.DB_SERVER_PORT || 3306,
