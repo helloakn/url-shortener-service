@@ -35,7 +35,18 @@ export class ShortenedURLModel<T  extends { id?: number }> extends Table<T> {
       });
     });
   }
-  async incrementHitCount(_code:string,num:number): Promise<T>{
-    return await this.updateData({hitcount:num},` short_code='${_code}'`)
+  async incrementHitCount(_code:string): Promise<T>{
+    //return await this.updateData({hitcount:num},` short_code='${_code}'`)
+    return new Promise(resolve=>{
+      let queryString = `UPDATE ${this.tableName} SET hitcount=hitcount+1 WHERE short_code='${_code}'`
+      this.dbConnection.query(queryString, (err, res) => {
+        if (err) {
+      //    console.log("error: ", err);
+          resolve(res);
+          return;
+        }
+        resolve(res);
+      });
+    });
   }
 }

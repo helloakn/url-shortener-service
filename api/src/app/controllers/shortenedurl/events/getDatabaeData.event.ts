@@ -46,9 +46,18 @@ export async function GetDatabaeDataEvent<T extends IController>(me: T, req: THt
         message:"Successfully Retrieve",
         data:objInsertedRw
       };
-      shortenedUrlModel.incrementHitCount(data.short_code,data.hitcount+1)
+      /* 
+      * incrementHitCount , 
+      * we will keep hitcount increase for every single request
+      * we will not wait this process to be finished, we will keep moving
+      */
+      shortenedUrlModel.incrementHitCount(data.short_code)
       if(data.hitcount>5){
-        //incrementHitCount
+        /* 
+        * we will assume as the popular record if hitcount reach to max 5  
+        * and then we will submit it to cache layer,
+        * we will not wait this process to be finished too
+        */
         const cacheLayer:CacheLayer = new CacheLayer();
         cacheLayer.setData(data.short_code,data.url)
         console.log('push to redis')
