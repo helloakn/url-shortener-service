@@ -7,13 +7,15 @@ export default {
   },
   "produces": ["application/json"],
   "paths": {
-    "/shortenedurl/generate": {
+    "/api/shortenedurl/generate": {
       "post": {
+        
         "tags": ["User API"],
-        "summary":"this is summary",
-        "description":"aaa aaa",
+        
+        "summary":"Generate the short url",
+        "description":"Generate the short url",
         "x-swagger-router-controller": "home",
-        "operationId": "cc",
+        "operationId": "generate",
         "parameters": [
           { "name": "url", "in": "formData", "required": true, "type": "string" },
           { "name": "expire_date", "in": "formData", "required": true, "type": "string", "format":"date"},
@@ -22,9 +24,10 @@ export default {
         "responses": {}
       },
     },
-    "/shortenedurl/decodeurl": {
+    "/api/shortenedurl/retrieve-url": {
       "post": {
-        "description":"aaa",
+        "description":"retrieve the full url with generated short code",
+        "summary":"retrieve the full url with generated short code",
         "tags": ["User API"],
         "x-swagger-router-controller": "home",
         "operationId": "cc",
@@ -35,37 +38,41 @@ export default {
       },
       
     },
-    "/admin/login": {
-      
+    "/api/admin/login": {
       "post": {
+        "description":"You can input any email and any password, *api will generate token*",
         "summary":" : login to get token",
-        "operationId": "index",
+        "operationId": "login",
         "tags": ["Admin Api"],
         "parameters": [
-          { "name": "username", "in": "formData", "description":"authorizatio header." ,"required": true, "type":"string"},
-          { "name": "password", "in": "formData", "description":"ss." ,"required": true, "type":"string"}
+          { "name": "email", "in": "formData", "description":"abc@abc.com any email" ,"required": true, "type":"string"},
+          { "name": "password", "in": "formData", "description":"123456 or any password" ,"required": true, "type":"string"}
         ],
         "responses": {}
       }
     },
-    "/admin/shortcodeurl": {
+    "/api/admin/shortenedurl/getlist": {
       "post": {
         "summary":" : Retrieve the list of shortcode url , full url and exp time",
         "description":" : Retrieve the list of shortcode url , full url and exp time",
-        "operationId": "index",
+        "operationId": "getlist",
         "tags": ["Admin Api"],
         "parameters": [
-          { "name": "Bearer", "in": "header", "description":"authorizatio header." ,"required": true, "type":"string"}
+          { "name": "Authorization", "in": "header", "description":"authorizatio header. example => Bearer <Token>" ,"required": true, "type":"string"},
+          { "name": "row_count", "in": "formData", "description":"for the pagination, how many records you wish to retrieve per request." ,"required": false, "type":"string"},
+          { "name": "page_at", "in": "formData", "description":"which page do u want to go" ,"required": false, "type":"string"},
+          { "name": "search", "in": "formData", "description":"search for code or full url" ,"required": false, "type":"string"}
         ],
         "responses": {}
       }
     },
-    "/admin/shortcodeurl/delete": {
+    "/api/admin/shortenedurl/delete": {
       "delete": {
-        "operationId": "index",
+        "operationId": "delete",
         "tags": ["Admin Api"],
         "parameters": [
-          { "name": "Bearer", "in": "header", "description":"authorizatio header." ,"required": true, "type":"string"}
+          { "name": "Authorization", "in": "header", "description":"authorizatio header. example => Bearer <Token>" ,"required": true, "type":"string"},
+          { "name": "code", "in": "formData", "required": true, "type": "string" }
         ],
         "responses": {}
       }

@@ -31,11 +31,11 @@ export async function GetListFunctionEvent<T extends IController>(me: T, req: TH
         .isNumber('Must be number')
 
       v.input('search',formData.search)
-        .isInjectionInput('not acceptable input')
+        
         .customRule( 
           (that):boolean=>{
             if(!(formData.search == undefined || formData.search =='')){
-              that.isMax(50,'Maximum length of the search word is 50')
+              that.isInjectionInput('not acceptable input').isMax(50,'Maximum length of the search word is 50')
             }
             return true;
           }
