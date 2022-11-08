@@ -1,7 +1,9 @@
+import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import Controller from '@/core/common/controller.common'
 import { THttpApplication,THttpRequest, THttpResponse, IEvent,
   TValidateResult,TResponseSuccessWithData} from '@/core/types';
 
+import config from '@/core/common/config'
 import {StatusCode} from '@/core/common/enums'
 const { Success, ClientError } = StatusCode
 
@@ -23,10 +25,11 @@ export class AdminAuthController extends Controller{
 
     const vResult: TValidateResult = await this.validator.validate();
     if(vResult.status){
+      const token = jwt.sign({ userAccount: 'administrator',authType:"admin" }, config.JKey.admin, { expiresIn: '7d' });
       let returnData:TResponseSuccessWithData = {
         message:"Successfully Login",
         data:{
-          "token":"this is token"
+          "token":token
         }
       };
       this.response(res,Success.OK,returnData);

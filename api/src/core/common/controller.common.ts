@@ -1,10 +1,15 @@
+import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
+
 import { 
   THttpApplication, 
   TRequestMethod, THttpRequest,THttpResponse,TResponseSuccessMsg,TResponseMsgBody,
-  IEvent,IEventCallBack
+  IEvent,IEventCallBack,CustomRequest
 } from '@/core/types';
 
 import {Validator} from './validator'
+import config from '@/core/common/config'
+import {StatusCode} from '@/core/common/enums'
+const { Success, ClientError } = StatusCode
 
 export default class Controller{
 
@@ -64,6 +69,27 @@ export default class Controller{
     }
     else{
       res.status(responseCode).send(JSON.stringify(responseData));
+    }
+  }
+
+  middleware=(_type:string,_callBack:IEvent):IEvent=>{
+    return async (req: THttpRequest, res: THttpResponse)=>{
+      try {
+        const token:string |undefined= req.header('Authorization')?.replace('Bearer ', '');
+        if (!token) {
+          throw new Error(); 
+        }
+        if (token==null || token=='' || token == undefined){
+          this.response(res,ClientError.Forbidden)
+        }
+        else{
+          const decoded = jwt.verify(token, _type=='admin'?config.JKey.admin:config.JKey.admin);
+          (req as CustomRequest).token = decoded;
+          _callBack(req,res);
+        }
+      }catch (err) {
+        this.response(res,ClientError.Forbidden)
+      }
     }
   }
 

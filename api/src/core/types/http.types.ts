@@ -1,5 +1,5 @@
 import Express from 'express';
-
+import { JwtPayload } from 'jsonwebtoken';
 import { Validator } from '@/core/common/validator';
 import {TResponseErrorObject} from './validator.types'
 /*
@@ -22,6 +22,10 @@ export interface IEvent {
 }
 export interface IEventCallBack {
   (req: THttpRequest, res: THttpResponse, callBack:IEvent): void;
+}
+
+export interface CustomRequest extends THttpRequest {
+  token: string | JwtPayload;
 }
 
 /* ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
