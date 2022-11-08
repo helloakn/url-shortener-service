@@ -1,6 +1,6 @@
 import {
   THttpRequest,THttpResponse,THttpApplication,
-  TRequestMethod,IEvent,TResponseSuccessMsg,
+  TRequestMethod,IEvent,IEventCallBack,TResponseSuccessMsg,
   TResponseMsgBody,TResponseSuccessWithPaginateData,TPaginateNData,TResponseSuccessWithData,TDic,
   IController
 } from './http.types'
@@ -13,7 +13,7 @@ import {
 
 export{
   THttpRequest,THttpResponse,THttpApplication,
-  TRequestMethod,IEvent,TResponseSuccessMsg,TResponseErrorRow,TResponseErrorObject,
+  TRequestMethod,IEvent,IEventCallBack,TResponseSuccessMsg,TResponseErrorRow,TResponseErrorObject,
 
   TResponseMsgBody,TResponseSuccessWithPaginateData,TPaginateNData,TResponseSuccessWithData,TDic,
   IController,

@@ -6,6 +6,8 @@ export default {
   RedisConfig: {
     host: process.env.REDIS_SERVER_HOST || 'localhost',
     port: process.env.REDIS_SERVER_PORT || 3333,
+    user: process.env.REDIS_SERVER_USER || 'master',
+    password: process.env.REDIS_SERVER_PWD || '',
   },
   DatabaseConfig: {
     host: process.env.DB_SERVER_HOST || 'localhost',

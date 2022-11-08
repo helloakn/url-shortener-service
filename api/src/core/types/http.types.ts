@@ -20,6 +20,9 @@ export type TRequestMethod = "post" | "get" | "put" | "delete"
 export interface IEvent {
   (req: THttpRequest, res: THttpResponse): void;
 }
+export interface IEventCallBack {
+  (req: THttpRequest, res: THttpResponse, callBack:IEvent): void;
+}
 
 /* ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 * Custom Objects

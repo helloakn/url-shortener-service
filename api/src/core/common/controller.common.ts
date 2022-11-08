@@ -1,8 +1,7 @@
-
 import { 
   THttpApplication, 
-  TRequestMethod, THttpResponse,TResponseSuccessMsg,TResponseMsgBody,
-  IEvent
+  TRequestMethod, THttpRequest,THttpResponse,TResponseSuccessMsg,TResponseMsgBody,
+  IEvent,IEventCallBack
 } from '@/core/types';
 
 import {Validator} from './validator'
@@ -20,7 +19,12 @@ export default class Controller{
     this.#_prefix = url;
     return this;
   }
-  
+  eventSerializer(firstEvent:IEventCallBack,secondEvent:IEvent):IEvent{
+
+    return async (req: THttpRequest, res: THttpResponse)=>{
+        return await firstEvent(req,res,secondEvent);
+    }
+  }
   action(methods : Array<TRequestMethod>, url: string, event:IEvent):Controller{
     /*
     * generate full url { prefix + url}

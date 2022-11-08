@@ -16,4 +16,11 @@ export const RouteApi=(httpSrv: THttpApplication)=>{
     .action([RequestMethod.Post,RequestMethod.Get],"/test",shortenedUrlController.TestFunction)
     //shortenedurl/generate
     .action([RequestMethod.Post],"/generate",shortenedUrlController.GenerateUrlFunction)
-}
+    // callback test
+    .action([RequestMethod.Post],"/retrieve-url",
+      shortenedUrlController.eventSerializer(
+        shortenedUrlController.GetCacheData,
+        shortenedUrlController.GetDatbaseData
+      )
+    )
+  }
