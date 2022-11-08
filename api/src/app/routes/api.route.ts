@@ -9,18 +9,22 @@ export const RouteApi=(httpSrv: THttpApplication)=>{
   const shortenedUrlController = new ShortenedUrlController(httpSrv);
 
   //url=>{prefix}/{url}
-  //shortenedurl/test
+  //api/shortenedurl/test
   shortenedUrlController
-    .prefix('shortenedurl')
-    //shortenedurl/test
+    .prefix('api/shortenedurl')
+    // end point => api/shortenedurl/test
     .action([RequestMethod.Post,RequestMethod.Get],"/test",shortenedUrlController.TestFunction)
-    //shortenedurl/generate
+    // end point => api/shortenedurl/generate
     .action([RequestMethod.Post],"/generate",shortenedUrlController.GenerateUrlFunction)
-    // callback test
+    // end point => api/shortenedurl/retrieve-url
     .action([RequestMethod.Post],"/retrieve-url",
-      shortenedUrlController.eventSerializer(
-        shortenedUrlController.GetCacheData,
-        shortenedUrlController.GetDatbaseData
+      /*
+      * firstly we will search in cache, 
+      * if not found in cache layer, we will move to database layer to keep searching
+      */
+      shortenedUrlController.eventSerializer( 
+        shortenedUrlController.GetCacheData, // cache layer
+        shortenedUrlController.GetDatbaseData // database layer
       )
     )
   }
