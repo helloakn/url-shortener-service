@@ -30,7 +30,7 @@ export default class Controller{
         return await firstEvent(req,res,secondEvent);
     }
   }
-  action(methods : Array<TRequestMethod>, url: string, event:IEvent):Controller{
+  route(methods : Array<TRequestMethod>, url: string, event:IEvent):Controller{
     /*
     * generate full url { prefix + url}
     * 

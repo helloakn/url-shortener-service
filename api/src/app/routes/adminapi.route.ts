@@ -15,13 +15,13 @@ export const RouteAdminApi=(httpSrv: THttpApplication)=>{
   adminAuthController
     .prefix('api/admin')
     // end point => api/admin/login
-    .action(
+    .route(
       [RequestMethod.Post],
       "/login",adminAuthController.LogInFunction)
 
   asurlControl
     .prefix('api/admin')  
-    .action(
+    .route(
       [RequestMethod.Post],
       "/shortenedurl/getlist",
       asurlControl.middleware('admin',asurlControl.GetListFunction)
