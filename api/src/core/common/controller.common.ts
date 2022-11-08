@@ -88,7 +88,7 @@ export default class Controller{
           _callBack(req,res);
         }
       }catch (err) {
-        this.response(res,ClientError.Forbidden)
+        this.response(res,ClientError.Forbidden,{error:'unauthorize access'})
       }
     }
   }

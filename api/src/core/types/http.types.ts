@@ -38,6 +38,7 @@ export interface CustomRequest extends THttpRequest {
 * { message:"success"}
 */
 export type TResponseSuccessMsg = { message: string}
+export type TResponsAccessDenyMsg = { error: string}
 
 /*
 * TDic => 
@@ -106,7 +107,7 @@ export type TResponseSuccessWithPaginateData = {
 }
 export type TResponseMsgBody = TResponseSuccessMsg 
 | TResponseSuccessWithData | TResponseSuccessWithPaginateData 
-| TResponseErrorObject 
+| TResponseErrorObject | TResponsAccessDenyMsg
 
 // *** Contrller
 export interface IController {

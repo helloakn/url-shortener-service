@@ -19,9 +19,11 @@ export const RouteAdminApi=(httpSrv: THttpApplication)=>{
       [RequestMethod.Post],
       "/login",adminAuthController.LogInFunction)
 
-  asurlControl.action(
+  asurlControl
+    .prefix('api/admin')  
+    .action(
       [RequestMethod.Post],
-      "/login",
+      "/shortenedurl/getlist",
       asurlControl.middleware('admin',asurlControl.GenerateUrlFunction)
     )
     
