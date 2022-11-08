@@ -1,5 +1,6 @@
-import {TPaginateNData} from '@/core/types/index'
+import {TPaginateNData, TDic} from '@/core/types/index'
 import { Database } from './database.common';
+import { timeDiff, formatDate, generateCode ,generateRandomNumer} from '@/core/functions';
 
 interface IBaseModel<T> extends Database{
   tableName: string;
@@ -27,9 +28,56 @@ export class Table<T  extends { id?: number }> extends Database implements IBase
     })
   }
   
+  updateData = (newRecord: TDic,whereCase=""): Promise<T> => {
+    let now = new Date();
+    var formatted_date = formatDate(now,"yyyy-MM-dd h:mm:ss"); //now.toLocaleString(); //moment(now).format('YYYY-MM-DD HH:MM:SS');
+    newRecord.updated_at = formatted_date;
+
+    let queryArray = []
+    type TColumn= string | number | Date | null;
+    for(let key in newRecord){ 
+      let value: TColumn = typeof newRecord[key] == 'string'||'Date'? "'"+newRecord[key]+"'":typeof newRecord[key] == 'number' ? newRecord[key] : ''
+      //queryArray.push(` ${key}=${isNaN(newRecord[key])?"'"+newRecord[key]+"'":newRecord[key] }`);
+      queryArray.push(`${key}=${value}`);
+    }
+    //console.log('queryArray =>',queryArray.join(','));
+    let queryString = `UPDATE ${this.tableName} SET ${queryArray.join(',')} ${whereCase==""?"":" WHERE "+whereCase}`
+    console.log('queryString',queryString)
+    return new Promise(resolve => {
+      this.dbConnection.query(queryString, (err, res) => {
+        if (err) {
+      //    console.log("error: ", err);
+          resolve(res);
+          return;
+        }
+        resolve(res);
+      });
+    });// end Promise
+  }//end getRecordById function
+
   findById(id:number): Promise<T>| null{
     return new Promise<T>((resolve,reject) => {
       let query: string = `SELECT * FROM ${this.tableName} WHERE id =${id} AND deleted_at IS NULL`;
+      this.dbConnection.query(query, (err, res) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        if (res.length) {
+          resolve(res[0]);
+          return;
+        }
+        else{
+          resolve(null as any);
+          return;
+        }
+      });
+    })
+  }
+
+  findByKey(columnName:string,value:string): Promise<T>| null{
+    return new Promise<T>((resolve,reject) => {
+      let query: string = `SELECT * FROM ${this.tableName} WHERE ${columnName} ='${value}' AND deleted_at IS NULL`;
       this.dbConnection.query(query, (err, res) => {
         if (err) {
           reject(err);

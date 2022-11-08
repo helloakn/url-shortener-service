@@ -35,4 +35,7 @@ export class ShortenedURLModel<T  extends { id?: number }> extends Table<T> {
       });
     });
   }
+  async incrementHitCount(_code:string,num:number): Promise<T>{
+    return await this.updateData({hitcount:num},` short_code='${_code}'`)
+  }
 }

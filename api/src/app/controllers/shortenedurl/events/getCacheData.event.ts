@@ -38,11 +38,13 @@ export async function GetCacheDataEvent<T extends IController>(me: T, req: THttp
       let responseData:TDic = {
         'code':formData.code,
         'full_url':fullUrl,
+        'from':'cache'
       }
       let returnData:TResponseSuccessWithData = {
         message:"Successfully Generated",
         data:responseData
       };
+      // => update hitcount +1
       me.response(res,Success.OK,returnData);
     }
   }
