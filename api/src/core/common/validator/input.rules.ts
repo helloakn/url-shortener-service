@@ -5,6 +5,7 @@ import { funIsMax } from './rules/isMax.rules'
 import { funIsTime } from './rules/isTime.rules'
 import {funIsValidDateFormat} from './rules/isValidDateFormat.rules'
 import { funIsValidUrl } from './rules/isValidUrl.rules'
+import { funIsEmail } from './rules/isEmail.rules'
 
 import {TMsg} from '@/core/types/validator.types'
 
@@ -29,6 +30,8 @@ export namespace InputValidation {
     isValidDateFormat=(errMsg?: string)=>funIsValidDateFormat<Rules>(this,errMsg)
 
     isValidUrl=(errMsg?: string)=>funIsValidUrl<Rules>(this,errMsg)
+    
+    isEmail=(errMsg?: string)=>funIsEmail<Rules>(this,errMsg)
 
     evulate=():void=>{
       console.log(this.Errors)
