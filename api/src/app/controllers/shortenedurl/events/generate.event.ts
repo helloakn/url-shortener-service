@@ -20,7 +20,8 @@ export async function GenerateEvent<T extends IController>(me: T, req: THttpRequ
   // Begin Validation
   await me.validator.Rule(
     async v=>{
-      v.input('url',formData.url).isValidUrl("Please provide valid url address")
+      v.input('url',formData.url)
+        .isValidUrl("Please provide valid url address")
       v.input('expire_date',formData.expire_date)
         .isEmpty("not allow empty")
         .isValidDateFormat("date format is wrong")

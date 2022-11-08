@@ -24,7 +24,7 @@ export const RouteAdminApi=(httpSrv: THttpApplication)=>{
     .action(
       [RequestMethod.Post],
       "/shortenedurl/getlist",
-      asurlControl.middleware('admin',asurlControl.GenerateUrlFunction)
+      asurlControl.middleware('admin',asurlControl.GetListFunction)
     )
     
   }

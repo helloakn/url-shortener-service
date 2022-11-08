@@ -1,4 +1,5 @@
 import { Table } from "@/core/common/database/table.common"
+import { TPaginateNData } from "@/core/types";
 
 export interface TShortenedURL {
   id?: number,
@@ -47,6 +48,22 @@ export class ShortenedURLModel<T  extends { id?: number }> extends Table<T> {
         }
         resolve(res);
       });
+    });
+  }
+
+  async getList(search:string='',row_count: number,page_at: number) : Promise<TPaginateNData>{
+    return new Promise(resolve=>{
+      
+      let query:string = `SELECT short_code, url, hitcount from ${this.tableName}`;
+      if(search!=''){
+        query += ` WHERE short_code LIKE "%${search}%" OR url LIKE "%${search}%" AND deleted_at IS NULL `
+      }
+      else{
+        query += ` WHERE deleted_at IS NULL `
+      }
+      query += ' ORDER BY hitcount DESC'
+      let results = this.paginate(query,row_count,page_at)
+      resolve(results);
     });
   }
 }

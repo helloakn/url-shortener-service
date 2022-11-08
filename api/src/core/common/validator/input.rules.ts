@@ -6,9 +6,9 @@ import { funIsTime } from './rules/isTime.rules'
 import {funIsValidDateFormat} from './rules/isValidDateFormat.rules'
 import { funIsValidUrl } from './rules/isValidUrl.rules'
 import { funIsEmail } from './rules/isEmail.rules'
-
+import {funIsNumber} from './rules/isNumber.rules'
 import {TMsg} from '@/core/types/validator.types'
-
+import { funIsInjectionInput } from './rules/isInjectionInput.rules'
 export namespace InputValidation {
   export class Rules{
 
@@ -30,8 +30,12 @@ export namespace InputValidation {
     isValidDateFormat=(errMsg?: string)=>funIsValidDateFormat<Rules>(this,errMsg)
 
     isValidUrl=(errMsg?: string)=>funIsValidUrl<Rules>(this,errMsg)
-    
+
     isEmail=(errMsg?: string)=>funIsEmail<Rules>(this,errMsg)
+
+    isNumber=(errMsg?: string)=>funIsNumber<Rules>(this,errMsg)
+
+    isInjectionInput=(errMsg?: string)=>funIsInjectionInput<Rules>(this,errMsg)
 
     evulate=():void=>{
       console.log(this.Errors)

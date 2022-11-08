@@ -21,6 +21,7 @@ export async function GetCacheDataEvent<T extends IController>(me: T, req: THttp
   await me.validator.Rule(
     async v=>{
       v.input('code',formData.code)
+      .isInjectionInput('not acceptable input')
       .isEmpty("short code should not be empty")
       .isMax(25,"maximum length of the code is 25")
     }
