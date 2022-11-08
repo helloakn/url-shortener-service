@@ -1,5 +1,6 @@
 import { Table } from "@/core/common/database/table.common"
 import { TPaginateNData } from "@/core/types";
+import { timeDiff, formatDate, generateCode ,generateRandomNumer} from '@/core/functions';
 
 export interface TShortenedURL {
   id?: number,
@@ -66,4 +67,20 @@ export class ShortenedURLModel<T  extends { id?: number }> extends Table<T> {
       resolve(results);
     });
   }
+
+  DeleteByCode(_code: string): Promise<any>{
+    let me = this;
+    var formatted_date = formatDate(new Date(),"yyyy-MM-dd h:mm:ss"); //now.toLocaleString(); //moment(now).format('YYYY-MM-DD HH:MM:SS');
+   
+    return new Promise((resolve,reject) => {
+      me.dbConnection.query(`UPDATE ${this.tableName} set deleted_at='${formatted_date}' WHERE deleted_at IS NULL AND short_code='${_code}'`, (err, res) => {
+       // console.log('res',res)
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(res);
+      });// end sql command
+    });// end Promise
+  } // end Delete By ID Functions
 }

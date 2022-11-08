@@ -29,6 +29,9 @@ export class CacheLayer {
       resolve(await me.cacheConnection.get(_key));
     });
   }
+  delete(_key:string):void{
+    this.cacheConnection.del(_key)
+  }
 
   async setData(_key:string,_value:string):Promise<string|null>{
     let me = this;
