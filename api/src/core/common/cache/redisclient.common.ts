@@ -33,10 +33,18 @@ export class CacheLayer {
     this.cacheConnection.del(_key)
   }
 
-  async setData(_key:string,_value:string):Promise<string|null>{
+  async setData(_key:string,_value:string,_exdate:string):Promise<string|null>{
     let me = this;
     return new Promise(async (resolve)=>{
-      resolve(await me.cacheConnection.set(_key,_value));
+      /*
+      * setting expire time, 
+      * refrence https://redis.io/commands/set/
+      * EX seconds
+      * PX milliseconds
+      * EXAT timestamp-seconds 
+      * PXAT timestamp-milliseconds 
+      */ 
+      resolve(await me.cacheConnection.set(_key,_value,{'PX':(new Date(_exdate)).getTime()}));
     });
   }
 }

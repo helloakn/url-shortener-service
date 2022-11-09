@@ -56,9 +56,6 @@ export async function GenerateEvent<T extends IController>(me: T, req: THttpRequ
     
     let insertData=async (_code:string):Promise<TShortenedURL>=>{
       return new Promise(async (resolve,reject)=>{
-        i++;
-        console.log('i',i)
-        // function recursive call till unique coe
         let data : TShortenedURL = {
           short_code: _code,
           url: formData.url ,
@@ -68,15 +65,13 @@ export async function GenerateEvent<T extends IController>(me: T, req: THttpRequ
           updated_at: new Date(formatDate(new Date(),"yyyy-MM-dd h:mm:tt"))
         }
         let result = await shortenedUrlModel.checkCode(gCode);
-        console.log('result',result)
         if(result==null){
           let insertedRecord = await shortenedUrlModel.insert(data)
-          console.log('insertedRecord',insertedRecord)
           resolve(insertedRecord) 
         }
         else{
           gCode= generateCode(generateRandomNumer(5,24));
-          // function recursive call till unique coe
+          // function recursive call till unique code
           resolve(await insertData(gCode)) 
         }
       });
@@ -89,11 +84,9 @@ export async function GenerateEvent<T extends IController>(me: T, req: THttpRequ
     // or
     let objInsertedRw:TDic = {
       'code':insertedRw.short_code,
-      'short_url':"http://"+config.ServerConfig.HOST +'/u/'+insertedRw.short_code,
+      'short_url':"http://"+config.ServerConfig.HOST +`:${config.ServerConfig.PORT}/u/`+insertedRw.short_code,
       'expiration_date_time':insertedRw.expiration_date_time
     }
-    
-    
     
     let returnData:TResponseSuccessWithData = {
       message:"Successfully Generated",

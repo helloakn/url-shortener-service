@@ -47,7 +47,7 @@ export async function GetDatabaeDataEvent<T extends IController>(me: T, req: THt
         data:objInsertedRw
       };
       /* 
-      * incrementHitCount , 
+      * incrementHitCount(...) , 
       * we will keep hitcount increase for every single request
       * we will not wait this process to be finished, we will keep moving
       */
@@ -59,8 +59,9 @@ export async function GetDatabaeDataEvent<T extends IController>(me: T, req: THt
         * we will not wait this process to be finished too
         */
         const cacheLayer:CacheLayer = new CacheLayer();
-        cacheLayer.setData(data.short_code,data.url)
-        console.log('push to redis')
+        //put to redis for cache
+        cacheLayer.setData(data.short_code,data.url,data.expiration_date_time)
+        
       }
       me.response(res,Success.OK,returnData);
     }
