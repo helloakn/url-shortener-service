@@ -20,7 +20,7 @@ const dbConnection : mysql.Connection = mysql.createConnection({
 //console.log('dbConnection',dbConnection)
 dbConnection.connect(error => {
   if (error) throw error;
-  console.log("Successfully connected to the database.");
+  //console.log("Successfully connected to the database.");
 });
 
 export type TMySqlConnection = mysql.Connection;

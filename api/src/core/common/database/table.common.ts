@@ -42,7 +42,7 @@ export class Table<T  extends { id?: number }> extends Database implements IBase
     }
     //console.log('queryArray =>',queryArray.join(','));
     let queryString = `UPDATE ${this.tableName} SET ${queryArray.join(',')} ${whereCase==""?"":" WHERE "+whereCase}`
-    console.log('queryString',queryString)
+   // console.log('queryString',queryString)
     return new Promise(resolve => {
       this.dbConnection.query(queryString, (err, res) => {
         if (err) {

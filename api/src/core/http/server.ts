@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyparser from 'body-parser';
-
+import http from 'http'
 import cors from 'cors'
 import expressFileUpload from 'express-fileupload'
 
@@ -8,15 +8,14 @@ import {RouteConfig} from '@/app/routes/index.route'
 import config from '@/core/common/config'
 const { ServerConfig } = config
 
-export class Server {
-  private httpSvr: express.Application;
-  #port: number | string = ServerConfig.PORT;
-
+export class Server{
+  public httpSvr: express.Application;
+  port: number | string = ServerConfig.PORT;
   constructor(){
     this.httpSvr = express();
   }
-
-  init(): void{
+ 
+  configure(){
     this.httpSvr.use(bodyparser.json());
     this.httpSvr.use(bodyparser.urlencoded({     // to support URL-encoded bodies
       extended: true
@@ -31,9 +30,14 @@ export class Server {
       }
     ));
     RouteConfig(this.httpSvr);
+  }
+  
+  init(){
+    this.configure();
+    // this.httpSvr.listen(this.#port, () => {
+    //  // console.log(`Server running at http://localhost:${this.#port}`)
+    // });
+    http.createServer(this.httpSvr).listen(this.port)
     
-    this.httpSvr.listen(this.#port, () => {
-      console.log(`Server running at http://localhost:${this.#port}`)
-    });
   }
 }
