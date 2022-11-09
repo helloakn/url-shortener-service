@@ -75,9 +75,9 @@ export class Table<T  extends { id?: number }> extends Database implements IBase
     })
   }
 
-  findByKey(columnName:string,value:string): Promise<T>| null{
+  findByKey(columnName:string,value:string,includeSoftDeleted:boolean=true): Promise<T>| null{
     return new Promise<T>((resolve,reject) => {
-      let query: string = `SELECT * FROM ${this.tableName} WHERE ${columnName} ='${value}' AND deleted_at IS NULL`;
+      let query: string = `SELECT * FROM ${this.tableName} WHERE ${columnName} ='${value}' `+(includeSoftDeleted?'':' AND deleted_at IS NULL');
       this.dbConnection.query(query, (err, res) => {
         if (err) {
           reject(err);

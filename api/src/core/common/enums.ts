@@ -39,6 +39,7 @@ export const StatusCode = {
     Forbidden:403,
     NotFound:404,
     MethodNotAllow:405,
-    TooManyRequests:429
+    TooManyRequests:429,
+    Gone:410
   }
 }
