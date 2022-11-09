@@ -55,6 +55,9 @@ It will also support redirecting the short urls to the correct url.
 #### Admin API Flow
 <img src="resources/admin-api-flow.png" width="70%">
 
+#### Swagger
+<img src="resources/swagger-ss.png" width="70%">
+
 ### File Structure
 ```
 -api
@@ -85,5 +88,23 @@ DB_SERVER_USR=
 DB_SERVER_PASSWD=
 DB_SERVER_DB_NAME=
 ```
+
+---
+
+##### create cache image
+```
+docker build -t urlshortener:cachelayer \
+  --no-cache -f ./docker/cacheDockerfile .
+```
+##### run cache image
+```
+docker run -i -t -d --name cachelayer001 \
+-p 3333:6379 \
+--privileged urlshortener:cachelayer
+```
 ### Acknowledgments
 Thank you so much.
+
+
+docker run -i -t -d --name cachelayer001 \
+--privileged urlshortener:cachelayer
