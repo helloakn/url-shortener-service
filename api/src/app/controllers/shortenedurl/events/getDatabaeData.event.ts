@@ -28,7 +28,6 @@ export async function GetDatabaeDataEvent<T extends IController>(me: T, req: THt
   if(vResult.status){
     const shortenedUrlModel = new ShortenedURLModel<TShortenedURL>();
     let data = await shortenedUrlModel.findByKey('short_code',formData.code)
-    console.log('data',data!.deleted_at)
     if(data==null){
       //no data
       me.response(res,ClientError.NotFound,{"message":"Not Found."})
@@ -40,19 +39,13 @@ export async function GetDatabaeDataEvent<T extends IController>(me: T, req: THt
       let expTime = data.expiration_date_time;
       let nowTime = formatDate(new Date(),"yyyy-MM-dd h:mm:tt");
       if(timeDiff(nowTime,expTime)>1){
-        //  valid date time
-        console.group('expiration date time')
-        console.log('exp',expTime)
-        console.log('now',nowTime)
-        console.log('result',timeDiff(nowTime,expTime))
-        console.groupEnd()
         let objInsertedRw:TDic = {
           'code':formData.code,
           'full_url':data.url,
           'from':'database'
         }
         let returnData:TResponseSuccessWithData = {
-          message:"Successfully Retrieve",
+          message:"Successfully Retrieve From Database",
           data:objInsertedRw
         };
         /* 
@@ -76,12 +69,6 @@ export async function GetDatabaeDataEvent<T extends IController>(me: T, req: THt
       }
       else{
         //it is exp record
-        console.group('expiration date time')
-        console.log('exp',expTime)
-        console.log('now',nowTime)
-        console.log('result',timeDiff(nowTime,expTime))
-        console.groupEnd()
-        console.log('expired')
         me.response(res,ClientError.Gone,{"message":"Already Expired."})
       }
     }
