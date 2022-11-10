@@ -113,10 +113,15 @@ For future, I will make cover for
 - ECR/ECS  
 - Lambda(Function/Layer/APIGateway)
 
+#### local machine without docker 
+first we need already installed node , mysql into machine.  
+for second, we have to configure.  
 #### configuration
+create **.env** file ./api/.env
 <details>
-<summary> .env</summary> 
+<summary> simple .env</summary> 
 
+you have to replace with yours.
 ```
 REST_SERVER_HOST=localhost
 REST_SERVER_PORT=9090
