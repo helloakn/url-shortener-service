@@ -119,7 +119,8 @@ For future, I will make cover for
 - ECR/ECS  
 - Lambda(Function/Layer/APIGateway)
 
-#### [6.1] local machine without docker 
+<details>
+<summary> [6.1] local machine without docker </summary> 
 first we need already installed node , mysql into machine.  
 for second, we have to configure.  
 #### [6.1.1] configuration
@@ -156,7 +157,7 @@ cd api
 npm run dev
 ```
 then we can access to http://localhost:9090 , you may need to check the port 
-
+</details>
 
 
 ##### create cache image
