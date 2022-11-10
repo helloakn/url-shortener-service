@@ -47,6 +47,8 @@ It will also support redirecting the short urls to the correct url.
 - Admin api to delete a URL (after deletion shortened URLs must return HTTP 410 on visit) 
 </details>
 
+---
+
 ### [3] Git Conventional Commits Message
 <pre>
 <b><a href="#body">[Type] : Message</a></b>
@@ -59,6 +61,8 @@ It will also support redirecting the short urls to the correct url.
 <sub>[Fix] message event for bla bla bla</sub>
 </pre>
 
+---
+
 ### [4] Flow Diagram
 
 #### [4.1] Chache Layer Flow
@@ -67,22 +71,33 @@ It will also support redirecting the short urls to the correct url.
 #### [4.2] Admin API Flow
 <img src="resources/admin-api-flow.png" width="70%">
 
+---
 
 ### [5] File Structure
 ```
 -api
+├── __tests__                         # for testing
+│   └── integration                   # for all the integration tests 
 ├── src                               # for typescripts
-│   ├── app                           # 
+│   ├── app                           # AS AS Open/Close Principle
 │   │   ├── controllers
-│   │   ├── middlewares
-│   │   ├── routes
-│   │   ├── controllers
-│   ├── core                          # 
+│   │   │    └─ ...
+│   │   │       ├─ controller.ts
+│   │   │       └─ events             
+│   │   ├── middlewares               
+│   │   ├── models                    # for database table
+│   │   └── routes                    # for admin / user / swigger api routes
+│   ├── core                          # AS Single Responsibility Principle
 │   │   ├── common
-│   │   │    └── interfacesNtypes  
-│   │   ├── functions
-│   │   ├── databases
-│   │   ├── http
+│   │   │    ├── cache                # redis
+│   │   │    ├── database             # mysql
+│   │   │    └── validator  
+│   │   │         └── rules           # we can add additional rules
+│   │   │             └── ...
+│   │   ├── functions                 # For Resuable functions
+│   │   ├── http                      # For Express
+│   │   ├── types
+└...
 
 ```
 
