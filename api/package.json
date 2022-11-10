@@ -6,7 +6,9 @@
     "@": "dist"
   },
   "scripts": {
-    "test": "jest --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
+    "test:unit": "jest -c jest.unit.config.ts --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
+    "test:e2e": "jest -c jest.e2e.config.ts --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
+    "test": "jest -c jest.all.config.ts --forceExit --detectOpenHandles  --watchAll --maxWorkers=1",
     "dev": "nodemon",
     "build": "tsc",
     "start": "node ./dist/index.js",
