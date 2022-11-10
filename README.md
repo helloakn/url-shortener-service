@@ -123,13 +123,39 @@ docker run -i -t -d --name cachelayer001 \
 
 ### How to Test
 test ....... mes
-#### command to test
-```
-cd api
-npm run test
-```
-### Testing Screen Shoot
-<img src="resources/user-section-integration-test.png" width="70%">
+<details>
+ <summary> Unit Test</summary>
+ 
+ command
+ ```
+ cd api
+ npm run test:unit
+ ```
+ <img src="resources/unit-test.png" width="70%">
+<details>
+
+<details>
+ <summary> Integration Test</summary>
+ 
+ command
+ ```
+ cd api
+ npm run test:e2e
+ ```
+ <img src="resources/integration-test.png" width="70%">
+<details>
+
+<details>
+ <summary> Test all in once</summary>
+ 
+ command
+ ```
+ cd api
+ npm run test
+ ```
+ <img src="resources/all-test.png" width="70%">
+<details>
+
 
 ### Acknowledgments
 Thank you so much.
