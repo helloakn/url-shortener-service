@@ -1,0 +1,7 @@
+FROM nginx
+ENV PORT 80
+ENV CONFIGDIR ../../docker/config
+RUN rm -rf /etc/nginx/conf.d/default.conf
+COPY $CONFIGDIR/loadbalancer.conf /etc/nginx/conf.d/loadbalancer.conf
+EXPOSE $PORT
+CMD ["nginx", "-g", "daemon off;"]
