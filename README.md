@@ -170,6 +170,9 @@ then we can access to http://localhost:9090 , you may need to check the port
 
 ---
 
+<details>
+<summary> [6.2] local machine with docker </summary> 
+
 ##### create cache image
 ```
 docker build -t urlshortener:cachelayer \
@@ -181,6 +184,7 @@ docker run -i -t -d --name cachelayer001 \
 -p 3333:6379 \
 --privileged urlshortener:cachelayer
 ```
+</details>
 
 ---
 
