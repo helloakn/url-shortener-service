@@ -104,7 +104,12 @@ It will also support redirecting the short urls to the correct url.
 │   │   ├── http                      # For Express
 │   │   ├── types
 └...
-
+├docker
+├── config                            #
+│   └── ...
+└...
+├── resources                         # images for readme file
+│   └── ...
 ```
 
 ---
