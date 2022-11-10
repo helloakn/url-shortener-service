@@ -102,6 +102,16 @@ docker run -i -t -d --name cachelayer001 \
 -p 3333:6379 \
 --privileged urlshortener:cachelayer
 ```
+
+### How to Test
+test ....... mes
+#### command to test
+```
+aaaa
+```
+### Testing Screen Shoot
+<img src="resources/user-section-integration-test.png" width="70%">
+
 ### Acknowledgments
 Thank you so much.
 
