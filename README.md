@@ -126,13 +126,11 @@ first we need already installed node , mysql into machine.
 for second, we have to configure.  
 
 <details>
-<summary> configuration </summary> 
+<summary> [6.1.1] configuration </summary> 
 
-create **.env** file ./api/.env
-<details>
-<summary> simple .env</summary> 
+create **.env** file ./api/.env with the following content  
 
-you have to replace with yours.
+(you have to replace with yours.)
 ```
 REST_SERVER_HOST=localhost
 REST_SERVER_PORT=9090
@@ -149,17 +147,24 @@ REDIS_SERVER_USER=user
 REDIS_SERVER_PWD=password
 ```
 </details>
-</details>
-#### [6.1.2] installation
+
+<details>
+<summary> [6.1.2] installation </summary> 
+
 ```
 cd api
 npm install
 ```
-#### [6.1.3] run
+</details>
+
+<details>
+<summary> [6.1.3] run </summary> 
+
 ```
 cd api
 npm run dev
 ```
+</details>
 then we can access to http://localhost:9090 , you may need to check the port 
 </details>
 
