@@ -4,40 +4,47 @@
 [![NodeJs](https://img.shields.io/badge/nodejs-v18.6.0-green)](https://github.com/helloakn/url-shortener-service) 
 [![Express](https://img.shields.io/badge/express-v^4.18.1-green)](https://github.com/helloakn/url-shortener-service) 
 ## Table of content
-- Application Description
-- Application Functionalities
-- Git Conventional Commits Message
-- Flow
-- File Structure
+- [1] Application Description
+- [2] Application Functionalities
+- [3] Git Conventional Commits Message
+- [4] Flow Diagram
+- [5] File Structure
 - How To Run
 - Acknowledgments
 ---
 
-### Application Description
-Create a URL-shortener service to shorten URLs.  
+### [1] Application Description
+URL-shortener service to shorten URLs.  
 API clients will be able to create short URLs from a full length URL.  
 It will also support redirecting the short urls to the correct url.
 
-### Application Functionalities
-#### Url Shortening
-- An API Client can send a url and be returned a shortened URL.
-- An API Client can specify an expiration time for URLs when creating shortened URL
-- Handle visits to Shortened URLs, they must redirect to the original URL with a HTTP
-302 redirect, 404 if not found.
-- Visiting expired URLs must return HTTP 410
-- Input URL should be validated and respond with error if not a valid URL
-- Regex based blacklist for URLs, urls that match the blacklist respond with an error
-- Hit counter for shortened URLs (increment with every hit)
-#### Admin API
-- Admin api (requiring token) to list
-  - Short Code
-  - Full Url
-  - Expiry (if any)
-  - Number of hits
-- Above list can filter by Short Code and keyword on origin url.
-- Admin api to delete a URL (after deletion shortened URLs must return HTTP 410 on visit)
+### [2] Application Functionalities
 
-### Git Conventional Commits Message
+<details>
+ <summary>[2.1] Url Shortening</summary>
+ 
+- An API Client can send a url and be returned a shortened URL. 
+- An API Client can specify an expiration time for URLs when creating shortened URL 
+- Handle visits to Shortened URLs, they must redirect to the original URL with a HTTP 
+302 redirect, 404 if not found. 
+- Visiting expired URLs must return HTTP 410 
+- Input URL should be validated and respond with error if not a valid URL 
+- Regex based blacklist for URLs, urls that match the blacklist respond with an error 
+- Hit counter for shortened URLs (increment with every hit) 
+</details>
+<details>
+<summary> [2.2] Admin API</summary> 
+
+- Admin api (requiring token) to list 
+  - Short Code 
+  - Full Url 
+  - Expiry (if any) 
+  - Number of hits 
+- Above list can filter by Short Code and keyword on origin url. 
+- Admin api to delete a URL (after deletion shortened URLs must return HTTP 410 on visit) 
+</details>
+
+### [3] Git Conventional Commits Message
 <pre>
 <b><a href="#body">[Type] : Message</a></b>
 <sub>Type =>  [Create], [Modify], [Fix], [Delete]</sub>
@@ -48,17 +55,17 @@ It will also support redirecting the short urls to the correct url.
 <sub>[Modify] message event for bla bla bla</sub>
 <sub>[Fix] message event for bla bla bla</sub>
 </pre>
-### Flow
-#### Chache Layer Flow
+
+### [4] Flow Diagram
+
+#### [4.1] Chache Layer Flow
 <img src="resources/cache-layer-flow.png" width="70%">
 
-#### Admin API Flow
+#### [4.2] Admin API Flow
 <img src="resources/admin-api-flow.png" width="70%">
 
-#### Swagger
-<img src="resources/swagger-ss.png" width="70%">
 
-### File Structure
+### [5] File Structure
 ```
 -api
 ├── src                               # for typescripts
@@ -75,19 +82,30 @@ It will also support redirecting the short urls to the correct url.
 │   │   ├── http
 
 ```
+#### Swagger
+<img src="resources/swagger-ss.png" width="70%">
 
 ### How To Run
-#### .env
+#### configuration
+<details>
+<summary> .env</summary> 
+
 ```
-REST_SERVER_HOST=0.0.0.0
+REST_SERVER_HOST=localhost
 REST_SERVER_PORT=9090
 
-DB_SERVER_HOST=
-DB_SERVER_PORT=
-DB_SERVER_USR=
-DB_SERVER_PASSWD=
-DB_SERVER_DB_NAME=
+DB_SERVER_HOST=localhost
+DB_SERVER_PORT=3306
+DB_SERVER_USR=username
+DB_SERVER_PASSWD=password
+DB_SERVER_DB_NAME=databasename
+
+REDIS_SERVER_HOST=redis-host
+REDIS_SERVER_PORT=redis-port
+REDIS_SERVER_USER=user
+REDIS_SERVER_PWD=password
 ```
+</details>
 
 ---
 
@@ -107,7 +125,8 @@ docker run -i -t -d --name cachelayer001 \
 test ....... mes
 #### command to test
 ```
-aaaa
+cd api
+npm run test
 ```
 ### Testing Screen Shoot
 <img src="resources/user-section-integration-test.png" width="70%">
