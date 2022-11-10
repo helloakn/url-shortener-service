@@ -121,9 +121,13 @@ For future, I will make cover for
 
 <details>
 <summary> [6.1] local machine without docker </summary> 
+
 first we need already installed node , mysql into machine.  
 for second, we have to configure.  
-#### [6.1.1] configuration
+
+<details>
+<summary> configuration </summary> 
+
 create **.env** file ./api/.env
 <details>
 <summary> simple .env</summary> 
@@ -145,7 +149,7 @@ REDIS_SERVER_USER=user
 REDIS_SERVER_PWD=password
 ```
 </details>
-
+</details>
 #### [6.1.2] installation
 ```
 cd api
@@ -159,6 +163,7 @@ npm run dev
 then we can access to http://localhost:9090 , you may need to check the port 
 </details>
 
+---
 
 ##### create cache image
 ```
