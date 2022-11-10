@@ -9,6 +9,9 @@
 - [3] Git Conventional Commits Message
 - [4] Flow Diagram
 - [5] File Structure
+- [6] How To Run
+- [5] How To Test
+- [5] OpenApi
 - How To Run
 - Acknowledgments
 ---
@@ -82,6 +85,9 @@ It will also support redirecting the short urls to the correct url.
 │   │   ├── http
 
 ```
+
+---
+
 ### How To Run
 #### configuration
 <details>
@@ -104,7 +110,7 @@ REDIS_SERVER_PWD=password
 ```
 </details>
 
----
+
 
 ##### create cache image
 ```
@@ -117,6 +123,8 @@ docker run -i -t -d --name cachelayer001 \
 -p 3333:6379 \
 --privileged urlshortener:cachelayer
 ```
+
+---
 
 ### How to Test
 This test support only for "local machine without docker"  
@@ -156,6 +164,8 @@ This test support only for "local machine without docker"
  <img src="resources/all-test.png" width="70%">
 </details>
 
+---
+
 #### OpenApi
 Pls let me assume our api is http://localhost:9090 .  
 So, our swagger url will be http://localhost:9090/swagger/  
@@ -163,8 +173,6 @@ Screen Shoot :
 <img src="resources/swagger-ss.png" width="70%">
 
 ### Acknowledgments
-Thank you so much.
-
-
-docker run -i -t -d --name cachelayer001 \
---privileged urlshortener:cachelayer
+I just want to let you know what a pleasure it was.  
+  
+I am truly grateful for the opportunity to speak with you and I look forward to hearing from you soon.
