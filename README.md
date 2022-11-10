@@ -122,7 +122,7 @@ docker run -i -t -d --name cachelayer001 \
 ```
 
 ### How to Test
-test ....... mes
+This test support only for "local machine without docker"  
 <details>
  <summary> Unit Test</summary>
  
