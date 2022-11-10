@@ -108,6 +108,7 @@ We have to choose our environment that where we will host our application.
 In this moment, I will make cover for two environment.  
 - local machine without docker 
 - local machine with docker  
+
 For future, I will make cover for 
 - ECR/ECS  
 - Lambda(Function/Layer/APIGateway)
