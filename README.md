@@ -132,7 +132,7 @@ test ....... mes
  npm run test:unit
  ```
  <img src="resources/unit-test.png" width="70%">
-<details>
+</details>
 
 <details>
  <summary> Integration Test</summary>
@@ -143,7 +143,7 @@ test ....... mes
  npm run test:e2e
  ```
  <img src="resources/integration-test.png" width="70%">
-<details>
+</details>
 
 <details>
  <summary> Test all in once</summary>
@@ -154,7 +154,7 @@ test ....... mes
  npm run test
  ```
  <img src="resources/all-test.png" width="70%">
-<details>
+</details>
 
 
 ### Acknowledgments
