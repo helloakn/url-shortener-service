@@ -82,9 +82,6 @@ It will also support redirecting the short urls to the correct url.
 │   │   ├── http
 
 ```
-#### Swagger
-<img src="resources/swagger-ss.png" width="70%">
-
 ### How To Run
 #### configuration
 <details>
@@ -131,6 +128,7 @@ This test support only for "local machine without docker"
  cd api
  npm run test:unit
  ```
+ Screen Shoot
  <img src="resources/unit-test.png" width="70%">
 </details>
 
@@ -142,6 +140,7 @@ This test support only for "local machine without docker"
  cd api
  npm run test:e2e
  ```
+ Screen Shoot
  <img src="resources/integration-test.png" width="70%">
 </details>
 
@@ -153,9 +152,14 @@ This test support only for "local machine without docker"
  cd api
  npm run test
  ```
+ Screen Shoot
  <img src="resources/all-test.png" width="70%">
 </details>
 
+#### OpenApi
+Pls let me assume our api is http://localhost:9090 .
+So, our swagger url will be http://localhost:9090/swagger/
+<img src="resources/swagger-ss.png" width="70%">
 
 ### Acknowledgments
 Thank you so much.
