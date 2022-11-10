@@ -112,12 +112,6 @@ It will also support redirecting the short urls to the correct url.
 ### [6] How To Run
 We have to choose our environment that where we will host our application.  
 In this moment, I will make cover for two environment.  
-- local machine without docker 
-- local machine with docker  
-
-For future, I will make cover for 
-- ECR/ECS  
-- Lambda(Function/Layer/APIGateway)
 
 <details>
 <summary> [6.1] local machine without docker </summary> 
@@ -168,8 +162,6 @@ npm run dev
 then we can access to http://localhost:9090 , you may need to check the port 
 </details>
 
----
-
 <details>
 <summary> [6.2] local machine with docker </summary> 
 
@@ -185,6 +177,10 @@ docker run -i -t -d --name cachelayer001 \
 --privileged urlshortener:cachelayer
 ```
 </details>
+
+For future, I will make cover for 
+- ECR/ECS  
+- Lambda(Function/Layer/APIGateway)
 
 ---
 
