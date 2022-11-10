@@ -10,6 +10,12 @@
 - [4] Flow Diagram
 - [5] File Structure
 - [6] How To Run
+  - [6.1] local machine without docker 
+    - [6.1.1] configuration
+    - [6.1.2] installation
+    - [6.1.3] run
+  - [6] How To Run
+  - [6] How To Run
 - [5] How To Test
 - [5] OpenApi
 - How To Run
@@ -113,10 +119,10 @@ For future, I will make cover for
 - ECR/ECS  
 - Lambda(Function/Layer/APIGateway)
 
-#### local machine without docker 
+#### [6.1] local machine without docker 
 first we need already installed node , mysql into machine.  
 for second, we have to configure.  
-#### configuration
+#### [6.1.1] configuration
 create **.env** file ./api/.env
 <details>
 <summary> simple .env</summary> 
@@ -138,6 +144,18 @@ REDIS_SERVER_USER=user
 REDIS_SERVER_PWD=password
 ```
 </details>
+
+#### [6.1.2] installation
+```
+cd api
+npm install
+```
+#### [6.1.3] run
+```
+cd api
+npm run dev
+```
+then we can access to http://localhost:9090 , you may need to check the port 
 
 
 
