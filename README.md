@@ -14,6 +14,10 @@
     - [6.1.1] configuration
     - [6.1.2] installation
     - [6.1.3] run
+  - [6.2] local machine with docker ( Recommended )
+    - [6.2.1] create docker network
+    - [6.2.2] build images
+    - [6.2.3] Create Containers
 - [7] How To Test
 - [8] OpenApi
 - [9] Acknowledgments
@@ -139,8 +143,6 @@ DB_SERVER_DB_NAME=databasename
 
 REDIS_SERVER_HOST=redis-host
 REDIS_SERVER_PORT=redis-port
-REDIS_SERVER_USER=user
-REDIS_SERVER_PWD=password
 ```
 </details>
 
@@ -167,7 +169,7 @@ then we can access to http://localhost:9090 , you may need to check the port
 <details>
 <summary> [6.2] local machine with docker ( Recommended ) </summary> 
 
-#### create docker network
+#### [6.2.1] create docker network
 ```
 docker network create \
   --driver=bridge \
@@ -176,7 +178,7 @@ docker network create \
   urlshortenernetwork
 ```
 
-##### build images
+##### [6.2.2] build images
 <details>
 <summary> database image </summary> 
 
@@ -200,7 +202,7 @@ docker build -t urlshortener:application \
 ```
 </details>
 
-#### Create Containers
+#### [6.2.3] Create Containers
 
 <details>
 <summary> cache container </summary> 
@@ -236,13 +238,15 @@ docker run -i -t -d --name applicationcontainer \
 ```
 </details>
 
-</details>
-
-
 clean all images of urlshortener
 ```
 docker rmi $(docker images urlshortener -q) -f
 ```
+
+</details>
+
+
+
 
 
 For future, I will make cover for 
