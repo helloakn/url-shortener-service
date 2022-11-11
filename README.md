@@ -14,12 +14,9 @@
     - [6.1.1] configuration
     - [6.1.2] installation
     - [6.1.3] run
-  - [6] How To Run
-  - [6] How To Run
-- [5] How To Test
-- [5] OpenApi
-- How To Run
-- Acknowledgments
+- [7] How To Test
+- [8] OpenApi
+- [9] Acknowledgments
 ---
 
 ### [1] Application Description
@@ -168,11 +165,7 @@ then we can access to http://localhost:9090 , you may need to check the port
 </details>
 
 <details>
-<summary> [6.2] local machine with docker </summary> 
-
-firstly we will build all the images,  
-then we will configure docker network  
-then we will create and run docker container  
+<summary> [6.2] local machine with docker ( Recommended ) </summary> 
 
 #### create docker network
 ```
@@ -184,7 +177,9 @@ docker network create \
 ```
 
 ##### build images
-database image
+<details>
+<summary> database image </summary> 
+
 ```
 docker build -t urlshortener:databaselayer \
   --build-arg db_host=localhost \
@@ -194,30 +189,44 @@ docker build -t urlshortener:databaselayer \
   --build-arg db_name=urlshortenerservice \
   --no-cache -f ./docker/databaseDockerfile .
 ```
+</details>
 
-application image
+<details>
+<summary> application image </summary> 
+
 ```
 docker build -t urlshortener:application \
   --no-cache -f ./docker/applicationDockerfile .
 ```
-#### Container Creation
-cache container
+</details>
+
+#### Create Containers
+
+<details>
+<summary> cache container </summary> 
+
 ```
 docker run --name cachecontainer \
 --network=urlshortenernetwork \
 --ip 172.3.0.15 \
 -d redis
 ```
+</details>
 
-database container
+<details>
+<summary> database container </summary> 
+
 ```
 docker run -i -t -d --name databasecontainer \
   --network=urlshortenernetwork \
   --ip 172.3.0.10 \
   --privileged urlshortener:databaselayer
 ```
+</details>
 
-create application container
+<details>
+<summary> application container </summary> 
+
 ```
 docker run -i -t -d --name applicationcontainer \
   -p 9090:9090 \
@@ -225,15 +234,14 @@ docker run -i -t -d --name applicationcontainer \
   --ip 172.3.0.12 \
   --privileged urlshortener:application
 ```
+</details>
 
 </details>
 
 
-
-
 clean all images of urlshortener
 ```
-docker images urlshortener -q
+docker rmi $(docker images urlshortener -q) -f
 ```
 
 
@@ -243,7 +251,7 @@ For future, I will make cover for
 
 ---
 
-### How to Test
+### [7] How to Test
 This test support only for "local machine without docker"  
 <details>
  <summary> Unit Test</summary>
@@ -283,13 +291,13 @@ This test support only for "local machine without docker"
 
 ---
 
-#### OpenApi
+#### [8] OpenApi
 Pls let me assume our api is http://localhost:9090 .  
 So, our swagger url will be http://localhost:9090/swagger/  
 Screen Shoot :  
 <img src="resources/swagger-ss.png" width="70%">
 
-### Acknowledgments
+### [9] Acknowledgments
 I just want to let you know what a pleasure it was.  
   
 I am truly grateful for the opportunity to speak with you and I look forward to hearing from you soon.
