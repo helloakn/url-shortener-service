@@ -1,9 +1,8 @@
 #FROM public.ecr.aws/debian/debian:bullseye
 FROM debian:10
-#FROM python:3 867MB big size
 ENV APPDIR /var/www/html/app
 ENV PORT 3306
-ENV SOURCEDIR ../../docker/config
+ENV CONFIGDIR ../../docker/config
 ARG db_password
 ARG db_user
 ARG db_name
@@ -14,10 +13,10 @@ WORKDIR $APPDIR
 RUN apt update -y
 RUN apt install mariadb-server -y
 
-ADD $SOURCEDIR/../database/backup.sql ./backup.sql
+ADD $CONFIGDIR/db.sql ./backup.sql
 # RUN usermod -d /var/lib/mysql/ mysql
 RUN rm -rf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY $SOURCEDIR/mysql.conf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY $CONFIGDIR/mysql.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN /etc/init.d/mysql restart && /bin/bash -c "mysqld_safe --skip-grant-tabses" && \
   sleep 5 && \
   mysql -u root -e "\
@@ -28,15 +27,8 @@ RUN /etc/init.d/mysql restart && /bin/bash -c "mysqld_safe --skip-grant-tabses" 
   GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'%'; \
   FLUSH PRIVILEGES; \
   "
-
-# DROP DATABASE IF EXISTS crudtest; \ 
-# CREATE DATABASE crudtest; \
-#GRANT PRIVILEGE ON *.* TO '$db_user'@'%'; \
-# CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_password';\
-
-# RUN /bin/bash -c  mysql -u root << echo "\
-#   GRANT PRIVILEGE ON `$db_name`.* TO '$db_user'@'%'; \
-# FLUSH PRIVILEGES;       \ "
+RUN  /etc/init.d/mysql restart && sleep 5 && mysql -h localhost -u root -p$db_password $db_name < ./backup.sql
+#mysql -h localhost -u root -ppassword urlshortenerservice < ./backup.sql
 
 # RUN mysql -u root << echo "\
 # CREATE database IF NOT EXISTS $db_name; \

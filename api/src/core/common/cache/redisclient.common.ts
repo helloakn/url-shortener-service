@@ -3,7 +3,8 @@ import * as redis from "redis";
 
 import config from '@/core/common/config'
 const {RedisConfig} = config
-const url = `redis://${RedisConfig.user}:${RedisConfig.password}@${RedisConfig.host}:${RedisConfig.port}`
+//const url = `redis://${RedisConfig.user}:${RedisConfig.password}@${RedisConfig.host}:${RedisConfig.port}`
+const url = `redis://${RedisConfig.host}:${RedisConfig.port}`
 const redisClient = redis.createClient({url:url})
 
 try{
@@ -11,10 +12,8 @@ try{
 }
 catch(err){
   console.log('[first] you have to make sure the redis information.')
-  console.warn(err)
-  
+  console.warn(err)  
 }
-
 
 export class CacheLayer {
   public cacheConnection : typeof redisClient ;

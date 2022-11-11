@@ -170,18 +170,72 @@ then we can access to http://localhost:9090 , you may need to check the port
 <details>
 <summary> [6.2] local machine with docker </summary> 
 
-##### create cache image
+firstly we will build all the images,  
+then we will configure docker network  
+then we will create and run docker container  
+
+#### create docker network
 ```
-docker build -t urlshortener:cachelayer \
-  --no-cache -f ./docker/cacheDockerfile .
+docker network create \
+  --driver=bridge \
+  --subnet=172.3.0.0/16 \
+  --ip-range=172.3.0.0/24 \
+  urlshortenernetwork
 ```
-##### run cache image
+
+##### build images
+database image
 ```
-docker run -i -t -d --name cachelayer001 \
--p 3333:6379 \
---privileged urlshortener:cachelayer
+docker build -t urlshortener:databaselayer \
+  --build-arg db_host=localhost \
+  --build-arg db_port=3306 \
+  --build-arg  db_user=root \
+  --build-arg db_password=password \
+  --build-arg db_name=urlshortenerservice \
+  --no-cache -f ./docker/databaseDockerfile .
 ```
+
+application image
+```
+docker build -t urlshortener:application \
+  --no-cache -f ./docker/applicationDockerfile .
+```
+#### Container Creation
+cache container
+```
+docker run --name cachecontainer \
+--network=urlshortenernetwork \
+--ip 172.3.0.15 \
+-d redis
+```
+
+database container
+```
+docker run -i -t -d --name databasecontainer \
+  --network=urlshortenernetwork \
+  --ip 172.3.0.10 \
+  --privileged urlshortener:databaselayer
+```
+
+create application container
+```
+docker run -i -t -d --name applicationcontainer \
+  -p 9090:9090 \
+  --network=urlshortenernetwork \
+  --ip 172.3.0.12 \
+  --privileged urlshortener:application
+```
+
 </details>
+
+
+
+
+clean all images of urlshortener
+```
+docker images urlshortener -q
+```
+
 
 For future, I will make cover for 
 - ECR/ECS  

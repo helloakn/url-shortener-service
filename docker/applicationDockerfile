@@ -1,0 +1,27 @@
+#FROM public.ecr.aws/debian/debian:bullseye
+FROM node:18.6.0-slim
+ENV APPDIR /var/www/html/app
+ENV PORT 9090
+ENV SOURCEDIR ../../api
+
+RUN mkdir -p $APPDIR
+WORKDIR $APPDIR
+
+COPY $SOURCEDIR $APPDIR
+RUN npm install
+RUN npm run build
+
+RUN echo "\
+REST_SERVER_HOST=0.0.0.0\n\
+REST_SERVER_PORT=9090\n\
+DB_SERVER_HOST=172.3.0.10\n\
+DB_SERVER_PORT=3306\n\
+DB_SERVER_USR=root\n\
+DB_SERVER_PASSWD=password\n\
+DB_SERVER_DB_NAME=urlshortenerservice\n\
+REDIS_SERVER_HOST=172.3.0.15\n\
+REDIS_SERVER_PORT=6379\n\
+" > .env
+RUN ls -la
+CMD npm run start
+EXPOSE $PORT
