@@ -169,7 +169,10 @@ then we can access to http://localhost:9090 , you may need to check the port
 <details>
 <summary> [6.2] local machine with docker ( Recommended ) </summary> 
 
-#### [6.2.1] create docker network
+
+<img src="resources/unit-test.png" width="70%">
+
+##### [6.2.1] create docker network
 ```
 docker network create \
   --driver=bridge \
@@ -202,7 +205,7 @@ docker build -t urlshortener:application \
 ```
 </details>
 
-#### [6.2.3] Create Containers
+##### [6.2.3] Create Containers
 
 <details>
 <summary> cache container </summary> 
@@ -251,6 +254,7 @@ docker rmi $(docker images urlshortener -q) -f
 
 For future, I will make cover for 
 - ECR/ECS  
+<img src="resources/cloud-archie.png" width="70%">
 - Lambda(Function/Layer/APIGateway)
 
 ---
