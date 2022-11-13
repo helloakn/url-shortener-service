@@ -170,7 +170,7 @@ then we can access to http://localhost:9090 , you may need to check the port
 <summary> [6.2] local machine with docker ( Recommended ) </summary> 
 
 
-<img src="resources/unit-test.png" width="70%">
+<img src="resources/local-archie.png" width="70%">
 
 ##### [6.2.1] create docker network
 ```
