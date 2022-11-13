@@ -254,7 +254,7 @@ docker rmi $(docker images urlshortener -q) -f
 
 For future, I will make cover for 
 - ECR/ECS  
-<img src="resources/cloud-archie.png" width="70%">
+  <img src="resources/cloud-archie.png" width="70%">
 - Lambda(Function/Layer/APIGateway)
 
 ---
