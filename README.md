@@ -306,6 +306,7 @@ Screen Shoot :
 <img src="resources/swagger-ss.png" width="70%">
 
 ### [9] Acknowledgments
+Hello Visitor,
 I just want to let you know what a pleasure it was.  
   
 I am truly grateful for the opportunity to speak with you and I look forward to hearing from you soon.
